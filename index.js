@@ -11,10 +11,24 @@ for (const file of commandFiles) {
 	client.commands.set(command.name, command);
 }
 
-client.on("ready", () => {
-  (async () => {/* ... */})()
-    .catch(console.log);
+var somevar = false; 
+var PTest = function () {
+    return new Promise(function (resolve, reject) {
+        if (somevar === true)
+            resolve();
+        else
+            reject();
+    });
+}
+var myfunc = PTest();
+myfunc.then(function () {
+     console.log("Promise Resolved");
 });
+// See the Difference here
+myfunc.catch(function () {
+     console.log("Promise Rejected");
+});
+client.once('ready', () => console.log('READY!'));
 client.on('message', message => {
 	if (!message.content.startsWith(client.config.prefix) || message.author.bot) return;
 	const args = message.content.slice(client.config.prefix.length).split(/ +/);
