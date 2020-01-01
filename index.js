@@ -11,7 +11,10 @@ for (const file of commandFiles) {
 	client.commands.set(command.name, command);
 }
 
-client.once('ready', () => console.log('READY!'));
+client.on("ready", () => {
+  (async () => {/* ... */})()
+    .catch(console.log);
+});
 client.on('message', message => {
 	if (!message.content.startsWith(client.config.prefix) || message.author.bot) return;
 	const args = message.content.slice(client.config.prefix.length).split(/ +/);
