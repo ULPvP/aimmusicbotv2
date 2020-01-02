@@ -31,7 +31,8 @@ client.on('message', message => {
     .addField('Aim!skip', '跳過目前在播放的一首音樂')
     .addField('Aim!stop', '停止播放音樂,並退出語音頻道')
     .addField('Aim!volume 聲量', '調整播歌德聲量')
-    .setFooter('機器人製作By UL老熊#1188',)
+    ..setFooter('機器人製作By 老熊Messter', 'https://yt3.ggpht.com/-An5r-xJGV50/AAAAAAAAAAI/AAAAAAAAAAA/I9rdWXpB5fU/s108-c-k-no-mo-rj-c0xffffff/photo.jpg');
+		msg.channel.send(exampleEmbed);
 	}
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 	const args = message.content.slice(prefix.length).split(/ +/);
