@@ -29,7 +29,7 @@ exports.run = (client, message, args, ops) => {
     collector.once('collect', function(m) {
       // Run ``play conmmand,passing鏈接 as args[0]
       let commandFile = require(`./play.js`);
-      commandFile.run(client, message, [this.video[parseInt(m.content)-1.url,ops);
+      commandFile.run(client, message, [this.video[parseInt(m.content)-1].url,ops);
                                                    });
                                                    });
                                                    }
