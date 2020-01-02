@@ -3,9 +3,9 @@ const { readdirSync } = require('fs');
 const { join } = require('path');
 const MusicClient = require('./struct/Client');
 const { Collection } = require('discord.js');
-const client = new Discord.Client();
 const token = process.env.TOKEN
 const prefix = process.env.DISCORD_PREFIX
+const client = new MusicClient({ token, prefix});
 
 const commandFiles = readdirSync(join(__dirname, 'commands')).filter(file => file.endsWith('.js'));
 for (const file of commandFiles) {
