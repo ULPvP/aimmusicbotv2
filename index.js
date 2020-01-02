@@ -17,9 +17,10 @@ for (const file of commandFiles) {
 
 
 client.once('ready', () => console.log('READY!'));
-bot.user.setGame("創作者:UL老熊#1188|Aim!play");
+
 
 client.on('message', message => {
+bot.user.setGame("創作者:UL老熊#1188|Aim!play");
 	if(msg.content.startsWith(prefix + help)) {
 const exampleEmbed = new Discord.RichEmbed()
     .setColor('#ff8c00')
