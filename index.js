@@ -19,7 +19,7 @@ client.user.setActivity('Made By Aim_老熊/UL老熊#1188')
 
 client.on('message', message => {
 	if(msg.content.startsWith(prefix + help)) {
-		const exampleEmbed = new Discord.RichEmbed()
+const exampleEmbed = new Discord.RichEmbed()
     .setColor('#ff8c00')
     .setAuthor('UL老熊')
     .setDescription('以下爲機器人指令')
