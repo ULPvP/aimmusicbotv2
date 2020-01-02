@@ -1,6 +1,12 @@
 const search = require('youtube-search')
 
-exports.run = (client, message, args, ops) => {
+module.exports = {
+	name: 'play',
+	description: '播放指令',
+	usage: '[command name]',
+	args: true,
+	cooldown: 5,
+	async execute(message, args) {
 
   //搜尋videos with arguments
   search(args.join(' '), function(err, res) {
@@ -33,4 +39,5 @@ exports.run = (client, message, args, ops) => {
                                                    };
                                                    });
                                                    }
+}
   
