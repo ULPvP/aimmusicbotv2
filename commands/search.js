@@ -6,7 +6,7 @@ module.exports = {
 	usage: '[command name]',
 	args: true,
 	cooldown: 2,
-	async execute(message, args) {
+	async execute(client, message, args, ops) {
 
   //搜尋videos with arguments
   search(args.join(' '), function(err, res) {
