@@ -1,5 +1,5 @@
 module.exports = {
-	name: 'np',
+	name: 'nowp',
 	description: '正在執行指令',
 	cooldown: 5,
 	execute(message) {
