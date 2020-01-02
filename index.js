@@ -3,7 +3,9 @@ const { readdirSync } = require('fs');
 const { join } = require('path');
 const MusicClient = require('./struct/Client');
 const { Collection } = require('discord.js');
-const client = new MusicClient({ token: process.env.DISCORD_TOKEN, prefix: process.env.DISCORD_PREFIX });
+const client = new Discord.Client();
+const token = process.env.TOKEN
+const prefix = process.env.DISCORD_PREFIX
 
 const commandFiles = readdirSync(join(__dirname, 'commands')).filter(file => file.endsWith('.js'));
 for (const file of commandFiles) {
@@ -14,15 +16,15 @@ for (const file of commandFiles) {
 
 client.once('ready', () => console.log('READY!'));
 client.on('message', message => {
-	if (!message.content.startsWith(client.config.prefix) || message.author.bot) return;
-	const args = message.content.slice(client.config.prefix.length).split(/ +/);
+	if (!message.content.startsWith(prefix) || message.author.bot) return;
+	const args = message.content.slice(prefix.length).split(/ +/);
 	const commandName = args.shift().toLowerCase();
 	const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 	if (!command) return;
-	if (command.guildOnly && message.channel.type !== 'text') return message.reply('I can\'t execute that command inside DMs!');
+	if (command.guildOnly && message.channel.type !== 'text') return message.reply('我不能執行你私訊我那個指令,請不要使用私訊!');
 	if (command.args && !args.length) {
-		let reply = `You didn't provide any arguments, ${message.author}!`;
-		if (command.usage) reply += `\nThe proper usage would be: \`${client.config.prefix}${command.name} ${command.usage}\``;
+		let reply = `請打一個正確的指令, ${message.author}!`;
+		if (command.usage) reply += `\n正確用法應該是: \`${prefix}${command.name} ${command.usage}\``;
 		return message.channel.send(reply);
 	}
 	if (!client.cooldowns.has(command.name)) {
@@ -45,8 +47,8 @@ client.on('message', message => {
 		command.execute(message, args)
 	} catch (error) {
 		console.error(error);
-		message.reply('there was an error trying to execute that command!');
+		message.reply('在執行該指令時發生錯誤');
 	}
 });
 
-client.login(client.config.token);
+client.login(token);
