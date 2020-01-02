@@ -22,7 +22,7 @@ client.user.setGame("創作者:UL老熊#1188|Aim!play");
 
 
 client.on('message', message => {
-if(msg.content.startsWith(prefix + help)) {
+if(message.content.startsWith(prefix + help)) {
 const exampleEmbed = new Discord.RichEmbed()
     .setColor('#ff8c00')
     .setAuthor('UL老熊')
