@@ -1,4 +1,4 @@
-const search = require('youtube-api-search-reloaded')
+const search = require('youtube-search')
 
 exports.run = (client, message, args, ops) => {
 
