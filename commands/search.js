@@ -1,8 +1,9 @@
 const search = require('youtube-search')
+const { join } = require('discord.js')
 
 module.exports = {
 	name: 'search',
-	description: '播放指令',
+	description: '搜尋指令',
 	usage: '[command name]',
 	args: true,
 	cooldown: 2,
