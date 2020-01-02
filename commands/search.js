@@ -13,4 +13,24 @@ exports.run = (client, message, args, ops) => {
   //loop them to create an Output String
   let resp = '';
   for(var i in videos) {
+    resp += `**[${parseInt(i)+1}]:** \`$videos[i].title}\`\n`;
+  }
+    //加點指引
+    resp += `\n**選擇數字 \`1-${videos.length}\``;
+    
+    //Send Output
+    message.channel.send(resp);
+    
+    //Create a 訊息接收method
+    const collector = message.channel.createMessageCollector(fitter);
+    
+    //更新接收器參數
+    collector.videos = videos;
+    collector.once('collect', function(m) {
+      // Run ``play conmmand,passing鏈接 as args[0]
+      let commandFile = require(`./play.js`);
+      commandFile.run(client, message, [this.video[parseInt(m.content)-1.url,ops);
+                                                   });
+                                                   });
+                                                   }
   
