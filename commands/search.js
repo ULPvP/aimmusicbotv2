@@ -1,11 +1,11 @@
 const search = require('youtube-search')
 
 module.exports = {
-	name: 'play',
+	name: 'search',
 	description: '播放指令',
 	usage: '[command name]',
 	args: true,
-	cooldown: 5,
+	cooldown: 2,
 	async execute(message, args) {
 
   //搜尋videos with arguments
