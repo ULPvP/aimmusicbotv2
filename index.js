@@ -6,7 +6,7 @@ const { Collection } = require('discord.js');
 const token = process.env.TOKEN
 const prefix = process.env.DISCORD_PREFIX
 const client = new MusicClient({ token, prefix});
-
+const exampleEmbed = new Discord.RichEmbed()
 const commandFiles = readdirSync(join(__dirname, 'commands')).filter(file => file.endsWith('.js'));
 for (const file of commandFiles) {
 	const command = require(join(__dirname, 'commands', `${file}`));
@@ -15,7 +15,24 @@ for (const file of commandFiles) {
 
 
 client.once('ready', () => console.log('READY!'));
+client.user.setActivity('Made By Aim_老熊/UL老熊#1188')
+
 client.on('message', message => {
+	if(msg.content.startsWith(prefix + help)) {
+    .setColor('#ff8c00')
+    .setAuthor('UL老熊')
+    .setDescription('以下爲機器人指令')
+    .addField('Aim!play 網址', '播放音樂（需利用網址)')
+    .addField('Aim!search 歌名', '播放音樂(需利用歌名)')		
+    .addField('Aim!nowp', '查看目前在播放的音樂')
+    .addField('Aim!pause', '暫時停止播放音樂,但不會退出語音頻道')
+    .addField('Aim!quene', '查看播放清單')
+    .addField('Aim!resume', '恢復播放')
+    .addField('Aim!skip', '跳過目前在播放的一首音樂')
+    .addField('Aim!stop', '停止播放音樂,並退出語音頻道')
+    .addField('Aim!volume 聲量', '調整播歌德聲量')
+    .setFooter('機器人製作By UL老熊#1188',)
+	}
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const commandName = args.shift().toLowerCase();
