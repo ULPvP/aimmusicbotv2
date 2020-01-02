@@ -16,7 +16,7 @@ for (const file of commandFiles) {
 
 
 client.once('ready', () => console.log('READY!'));
-client.user.setGame('創作者:UL老熊#1188|Aim!play')
+Discord.user.setGame('創作者:UL老熊#1188|Aim!play')
 
 client.on('message', message => {
 	if(msg.content.startsWith(prefix + help)) {
