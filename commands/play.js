@@ -34,7 +34,7 @@ module.exports = {
 			voiceChannel,
 			connection: null,
 			songs: [],
-			volume: 2,
+			volume: 0.65,
 			playing: true
 		};
 		message.client.queue.set(message.guild.id, queueConstruct);
