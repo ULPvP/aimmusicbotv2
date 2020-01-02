@@ -26,7 +26,7 @@ exports.run = (client, message, args, ops) => {
     
     //更新接收器參數
     collector.videos = videos;
-    collector.once('collect', function(m) {
+  collector.once('collect'), function(m) {
       // Run ``play conmmand,passing鏈接 as args[0]
       let commandFile = require(`./play.js`);
       commandFile.run(client, message, [this.video[parseInt(m.content)-1].url, ops);
