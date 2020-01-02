@@ -6,7 +6,7 @@ const { Collection } = require('discord.js');
 const token = process.env.TOKEN
 const prefix = process.env.DISCORD_PREFIX
 const client = new MusicClient({ token, prefix});
-const Discord = require('discord.js');
+const Discord = require("discord.js");
 const bot = new Discord.Client();
 const exampleEmbed = new Discord.RichEmbed()
 const commandFiles = readdirSync(join(__dirname, 'commands')).filter(file => file.endsWith('.js'));
