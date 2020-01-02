@@ -37,7 +37,7 @@ client.on('message', message => {
 		const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
 		if (now < expirationTime) {
 			const timeLeft = (expirationTime - now) / 1000;
-			return message.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command.`);
+			return message.reply(`請等待 ${timeLeft.toFixed(1)} 或更多秒去執行  \`${command.name}\` 指令!`);
 		}
 	}
 	timestamps.set(message.author.id, now);
