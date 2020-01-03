@@ -12,7 +12,7 @@ module.exports = {
   //搜尋videos with arguments
   search(args.join(' '), function(err, res) {
   // 錯誤handling
-  if (err) return message.channel.send('Sorry,發生一些錯誤');
+  if (err) return message.channel.send('Sorry,發生一些錯誤!');
   
   //搜尋10個結果
   let videos = res.video.slice(0, 20); //可以增加/減少
