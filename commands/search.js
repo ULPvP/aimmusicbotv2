@@ -1,44 +1,53 @@
-const search = require('youtube-search')
-const { join } = require('discord.js')
+const discord = require('discord.js');
+const client = new discord.Client();
+const search = require('youtube-search');
+const opts = {
+    maxResults: 25,
+    key: process.env.YOUTUBE_API,
+    type: 'video'
+};
 
 module.exports = {
 	name: 'search',
 	description: '搜尋指令',
-	usage: '[command name]',
-	args: true,
-	cooldown: 2,
-	async execute(client, message, args, ops) {
+	cooldown: 1,
+	execute(message) {
 
-  //搜尋videos with arguments
-  search(args.join(' '), function(err, res) {
-  // 錯誤handling
-  if (err) return message.channel.send('Sorry,發生一些錯誤!');
-  
-  //搜尋10個結果
-  let videos = res.video.slice(0, 20); //可以增加/減少
-  
-  //loop them to create an Output String
-  let resp = '';
-  for(var i in videos) {
-    resp += `**[${parseInt(i)+1}]:** \`$videos[i].title}\`\n`;
-  }
-    //加點指引
-    resp += `\n**選擇數字 \`1-${videos.length}\``;
-    
-    //Send Output
-    message.channel.send(resp);
-    
-    //Create a 訊息接收method
-    const collector = message.channel.createMessageCollector(fitter);
-    
-    //更新接收器參數
-    collector.videos = videos;
-  collector.once('collect'), function(m) {
-      // Run ``play conmmand,passing鏈接 as args[0]
-      let commandFile = require(`./play.js`);
-      commandFile.run(client, message, [this.video[parseInt(m.content)-1].url, ops]);
-                                                   };
-                                                   });
-                                                   }
-}
-  
+    if(message.content.toLowerCase() === 'Aim!search') {
+        let embed = new discord.RichEmbed()
+            .setColor("#73ffdc")
+            .setDescription("請Aim!search 你要的歌名。記得最好打與歌曲最有效的關鍵字!")
+            .setTitle("YouTube Search API");
+        let embedMsg = await message.channel.send(embed);
+        let filter = m => m.author.id === message.author.id;
+        let query = await message.channel.awaitMessages(filter, { max: 1 });
+        let results = await search(query.first().content, opts).catch(err => console.log(err));
+        if(results) {
+            let youtubeResults = results.results;
+            let i  =0;
+            let titles = youtubeResults.map(result => {
+                i++;
+                return i + ") " + result.title;
+            });
+            console.log(titles);
+            message.channel.send({
+                embed: {
+                    title: '選出一個數字是你想要的歌曲',
+                    description: titles.join("\n")
+                }
+            }).catch(err => console.log(err));
+            
+            filter = m => (m.author.id === message.author.id) && m.content >= 1 && m.content <= youtubeResults.length;
+            let collected = await message.channel.awaitMessages(filter, { maxMatches: 1 });
+            let selected = youtubeResults[collected.first().content - 1];
+
+            embed = new discord.RichEmbed()
+                .setTitle(`${selected.title}`)
+                .setURL(`${selected.link}`)
+                .setDescription(`${selected.description}`)
+                .setThumbnail(`${selected.thumbnails.default.url}`);
+
+            message.channel.send(embed);
+        }
+    }
+});
