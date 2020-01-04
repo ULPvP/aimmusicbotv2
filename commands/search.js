@@ -11,7 +11,6 @@ module.exports = {
         
 try {
         //搜尋videos with arguments
-        const args = message.content.slice(prefix.length).split(' ');
         search(args.join(" "), function(err, res)
                }
         
