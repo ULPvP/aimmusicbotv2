@@ -9,7 +9,8 @@ module.exports = {
     cooldown: 2,
     async excute(client, message, args, ops) {
         
-try {
+try 
+{
         //搜尋videos with arguments
         search(args.join(" "), function(err, res)
                }
