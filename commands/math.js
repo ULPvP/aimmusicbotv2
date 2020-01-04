@@ -1,3 +1,8 @@
+module.exports = {
+	name: 'math',
+	description: '數學計算機',
+	cooldown: 5,
+
 const math = require('mathjs');
 const Discord = require(discord.js);
 
@@ -13,11 +18,12 @@ try {
 }
   const embed = new Discord.MessageEmbed()
   .setColor(0xffffff)
-  .setTitle('數學計算機器人')
+  .setTitle('數學計算功能')
   .addField('Input', `\`\`\`js\n${args.join('')}\`\`\``)
   .addField('Output', `\`\`\`js\n${resp}\`\`\`\``)
   .setFooter('機器人製作By UL老熊#1188', 'https://yt3.ggpht.com/-An5r-xJGV50/AAAAAAAAAAI/AAAAAAAAAAA/I9rdWXpB5fU/s108-c-k-no-mo-rj-c0xffffff/photo.jpg');
 
 message.channel.send(embed);
-
 }
+
+};
