@@ -5,7 +5,7 @@ module.exports = {
 	execute(message) {
 
 const math = require('mathjs');
-const Discord = require(discord.js);
+const Discord = require('discord.js');
 
 exports.run = (client, message, args, tools) => {
 
