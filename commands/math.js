@@ -2,6 +2,7 @@ module.exports = {
 	name: 'math',
 	description: '數學計算機',
 	cooldown: 5,
+	execute(message) {
 
 const math = require('mathjs');
 const Discord = require(discord.js);
@@ -25,5 +26,5 @@ try {
 
 message.channel.send(embed);
 }
-
+	}
 };
