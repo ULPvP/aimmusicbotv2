@@ -7,15 +7,18 @@ module.exports = {
     usage: '[command name]',
     args: true,
     cooldown: 2,
-    async excute(client, message, ops) {
+    async excute(client, message, args, ops) {
         
-
+try {
         //搜尋videos with arguments
         const args = message.content.slice(prefix.length).split(' ');
-        search(args.join(" "), function(err, res) {
+        search(args.join(" "), function(err, res)
+               }
+        
             // 錯誤handling
-            if (err) return message.channel.send('Sorry,發生一些錯誤!');
-
+            catch (err) {
+            return message.channel.send('Sorry,發生一些錯誤!');
+        }
             //搜尋10個結果
             let videos = res.video.slice(0, 20); //可以增加/減少
 
