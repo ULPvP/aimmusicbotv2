@@ -7,10 +7,11 @@ module.exports = {
     usage: '[command name]',
     args: true,
     cooldown: 2,
-    async execute(client, message, args, ops) {
+    console.log(client, message, ops) {
+        
 
         //搜尋videos with arguments
-        search(console.log(args).join(" "), function(err, res) {
+        search(args.join(" "), function(err, res) {
             // 錯誤handling
             if (err) return message.channel.send('Sorry,發生一些錯誤!');
 
