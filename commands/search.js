@@ -16,7 +16,7 @@ try
                
         
             // 錯誤handling
-            catch (err) {
+               } catch (err) {
             return message.channel.send('Sorry,發生一些錯誤!');
         }
             //搜尋10個結果
