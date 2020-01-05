@@ -2,12 +2,12 @@ module.exports = {
 	name: 'math',
 	description: '數學計算機',
 	cooldown: 5,
-	execute(message) {
+	execute(client, message, args, tools) {
 
 const math = require('mathjs');
 const Discord = require('discord.js');
 
-exports.run = (client, message, args, tools) => {
+
 
 if (!args[0]) return message.channel.send('請打一個的算式');
 
@@ -26,5 +26,5 @@ try {
 
 message.channel.send(embed);
 }
-	}
+	
 };
