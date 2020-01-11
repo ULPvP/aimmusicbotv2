@@ -9,16 +9,15 @@ module.exports = {
     cooldown: 2,
     async excute(client, message, args, ops) {
         
-try 
-{
+
         //搜尋videos with arguments
         search(args.join(" "), function(err, res)
                
         
             // 錯誤handling
-               } catch (err) {
+             catch (err) 
             return message.channel.send('Sorry,發生一些錯誤!');
-        }
+        
             //搜尋10個結果
             let videos = res.video.slice(0, 20); //可以增加/減少
 
