@@ -11,11 +11,11 @@ module.exports = {
         
 
         //搜尋videos with arguments
-        search(args.join(" "), function(err, res)
+        search(args.join(" "), function(err, res);
                
         
             // 錯誤handling
-             catch (err) 
+        
             return message.channel.send('Sorry,發生一些錯誤!');
         
             //搜尋10個結果
