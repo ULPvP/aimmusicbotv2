@@ -17,7 +17,7 @@ for (const file of commandFiles) {
 
 
 client.on('ready', () => {
-client.user.setGame("創作者:UL老熊#1188|Aim!play");
+client.user.setGame("創作者:UL老熊#1188|ulp!play");
 })
 
 
